@@ -3,6 +3,9 @@ import { NUMEROS, VALOR, leerTodo, mensajeError } from '../lib/db.js';
 
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
+  // Diagnóstico sin datos sensibles: indica si la base se abre con OIDC (sin token fijo).
+  const oidc = Boolean(req.headers['x-vercel-oidc-token'] || process.env.VERCEL_OIDC_TOKEN) && Boolean(process.env.BLOB_STORE_ID);
+  res.setHeader('X-Acceso-Datos', oidc ? 'oidc' : 'token');
   try {
     const { vendidos, config } = await leerTodo();
     res.status(200).json({

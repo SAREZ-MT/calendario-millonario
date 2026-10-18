@@ -8,7 +8,7 @@ Página para que la gente escoja su número del calendario sin iniciar sesión. 
 ## Cómo está montado
 
 - **Vercel** sirve la página y las funciones de `/api`.
-- **Vercel Blob (privado)** guarda en un solo archivo JSON los números apartados, los datos de cada comprador y tus datos de contacto. Está conectado al proyecto con la variable `BLOB_READ_WRITE_TOKEN`.
+- **Vercel Blob (privado)** guarda en un solo archivo JSON los números apartados, los datos de cada comprador y tus datos de contacto. La página entra con OIDC (credenciales temporales que Vercel da en cada petición) usando la variable `BLOB_STORE_ID`, así que no hay ningún token fijo guardado.
 - La variable `CLAVE_PANEL` guarda la clave del panel. Para cambiarla: Vercel → proyecto → Settings → Environment Variables → `CLAVE_PANEL`, y luego vuelve a desplegar.
 
 Cada cambio de un número usa la versión (ETag) del archivo, así dos personas no pueden quedarse con el mismo número aunque lo toquen al mismo tiempo.
