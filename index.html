@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calendario Millonario 2027 · Parroquia Juan Pablo II</title>
+<meta name="description" content="Escoge tu número del Calendario Millonario 2027. Con tu aporte de $50.000 participas en el sorteo de 50 millones de pesos el 30 de diciembre de 2026 con la Lotería del Valle.">
+<meta name="theme-color" content="#b7820e">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Calendario Millonario 2027 · Escoge tu número">
+<meta property="og:description" content="Bono donativo de $50.000 para la obra de la Parroquia Juan Pablo II. Participa por 50 millones de pesos el 30 de diciembre de 2026.">
+<meta property="og:image" content="/vista-previa.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23b7820e'/%3E%3Cpath d='M14 6h4v6h6v4h-6v10h-4V16H8v-4h6z' fill='%23fbf3e2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&display=swap">
+<link rel="preload" as="image" href="/afiche.jpg">
+<style>
+/* Calendario Millonario 2027 · mismo estilo del afiche: franja dorada, atardecer, letras blancas y doradas, rojo de la capa. */
+:root{
+  color-scheme:dark;
+  --noche:#17110c;--tierra:#2a1b11;--madera:#241811;
+  --crema:#fbf3e2;--crema-suave:#d8cbb2;
+  --oro:#b7820e;--oro-alto:#cf9f2c;--oro-claro:#f3cf72;--oro-palido:#fde7ab;
+  --rojo:#a8281f;--rojo-hondo:#7f1a14;--rojo-claro:#f0958b;
+  --verde:#1e7f4f;--verde-claro:#86d9ab;
+  --vidrio:rgba(23,17,12,.74);--vidrio-hondo:rgba(0,0,0,.3);
+  --linea:rgba(243,207,114,.32);--linea-suave:rgba(251,243,226,.16);
+  --sombra-texto:0 2px 14px rgba(0,0,0,.6);
+  --f:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --tiny:url("/fondo.jpg");
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--noche);color:var(--crema);font-family:var(--f);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+[hidden]{display:none!important}
+img{max-width:100%}
+html.modal-abierto{overflow:hidden}
+.wrap{max-width:720px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+.fondo{position:fixed;inset:-80px;z-index:-2;background:var(--tiny) center/cover no-repeat;filter:blur(40px) saturate(1.2) brightness(.9)}
+.velo{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(23,17,12,.2) 0%,rgba(23,17,12,.7) 30%,rgba(23,17,12,.88) 70%,rgba(30,16,9,.94) 100%)}
+
+.banda{background:linear-gradient(90deg,var(--oro) 0%,var(--oro-alto) 50%,var(--oro) 100%);color:var(--crema);text-align:center;box-shadow:0 2px 0 rgba(0,0,0,.25)}
+.banda .wrap{padding-block:9px}
+.banda p{margin:0;padding-left:.24em;font-weight:500;letter-spacing:.24em;text-transform:uppercase;font-size:clamp(.8rem,3.7vw,1.5rem);line-height:1.3;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+
+.afiche{margin:0 auto;max-width:960px}
+.afiche img{display:block;width:100%;height:auto}
+@media (min-width:760px){
+  .afiche{padding:22px 16px 0}
+  .afiche img{border-radius:16px;border:1px solid var(--linea);box-shadow:0 24px 60px -24px rgba(0,0,0,.9)}
+}
+
+.intro{padding-block:26px 6px;display:grid;justify-items:center;gap:10px;text-align:center}
+.pildora{margin:0;display:inline-block;padding:8px 18px;border-radius:12px;background:linear-gradient(180deg,var(--oro-alto),var(--oro));color:#fff;font-weight:700;font-size:clamp(.92rem,3.8vw,1.15rem);line-height:1.3;box-shadow:0 8px 20px -10px rgba(0,0,0,.8)}
+@media (max-width:520px){.pildora span{display:block}.pildora .sep{display:none}}
+h1{margin:0;font-weight:900;font-size:clamp(2.2rem,10vw,3.7rem);line-height:1;text-transform:uppercase;letter-spacing:-.01em;text-shadow:var(--sombra-texto);text-wrap:balance}
+h2,h3{margin:0;font-weight:900;text-transform:uppercase;line-height:1.05;letter-spacing:-.01em}
+h2{font-size:1.5rem}
+h3{font-size:1.35rem}
+.valor{margin:0;font-style:italic;font-weight:900;line-height:1.05;color:var(--oro-claro);text-shadow:var(--sombra-texto)}
+.valor .monto{font-size:clamp(1.7rem,7.6vw,2.7rem)}
+.valor .cop{font-size:clamp(1rem,4vw,1.4rem);font-weight:800;margin-left:2px}
+.valor .usd{display:block;font-style:normal;font-weight:800;font-size:clamp(1rem,4.2vw,1.4rem);margin-top:2px}
+.juega{margin:2px 0 0;font-weight:600;font-size:clamp(1rem,4.2vw,1.25rem);text-shadow:var(--sombra-texto)}
+.juega strong{color:var(--oro-claro);font-weight:800;white-space:nowrap}
+
+.sala{padding-block:18px 4px;display:grid;gap:14px}
+.conteo{margin:0;text-align:center;font-size:1rem;font-weight:600;color:var(--crema-suave);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.conteo strong{color:var(--crema);font-weight:900;font-size:1.25rem}
+.ayuda{margin:0 auto;text-align:center;color:var(--crema-suave);font-size:.95rem;max-width:52ch}
+.pantalla{position:relative;height:46px;margin:6px 6% 0}
+.pantalla::before{content:"";position:absolute;inset:0;border-top:5px solid var(--oro-claro);border-radius:50% 50% 0 0/100% 100% 0 0;filter:drop-shadow(0 -6px 12px rgba(243,207,114,.85))}
+.pantalla span{position:absolute;left:0;right:0;top:15px;text-align:center;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--oro-claro)}
+.butacas{display:grid;gap:12px}
+.fila{display:flex;justify-content:center;gap:8px}
+.butaca{appearance:none;-webkit-appearance:none;font:inherit;position:relative;flex:0 1 76px;min-width:0;height:66px;padding:0 0 10px;display:grid;place-items:center;cursor:pointer;
+  border:1px solid rgba(255,255,255,.55);background:linear-gradient(180deg,#fffaf0 0%,#eee1c4 100%);color:var(--tierra);border-radius:18px 18px 8px 8px;
+  box-shadow:0 10px 20px -12px rgba(0,0,0,.9),inset 0 -3px 0 rgba(42,27,17,.08);transition:transform .15s ease,box-shadow .15s ease}
+.butaca::after{content:"";position:absolute;left:16%;right:16%;bottom:8px;height:4px;border-radius:2px;background:rgba(42,27,17,.2)}
+.butaca .num{font-weight:800;font-size:clamp(1rem,4.6vw,1.3rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.butaca:hover{box-shadow:0 0 0 2px var(--oro-claro),0 10px 20px -12px rgba(0,0,0,.9)}
+.butaca:focus-visible{outline:3px solid var(--oro-claro);outline-offset:3px}
+.butaca[aria-pressed="true"]{background:linear-gradient(180deg,var(--oro-palido) 0%,var(--oro-claro) 45%,var(--oro-alto) 100%);border-color:var(--oro-palido);transform:translateY(-3px);box-shadow:0 0 0 2px var(--oro-claro),0 12px 26px -8px rgba(243,207,114,.6)}
+.butaca[aria-pressed="true"]::after{background:rgba(42,27,17,.3)}
+.butaca.vendida{background:linear-gradient(180deg,#bd3a2e 0%,var(--rojo) 55%,var(--rojo-hondo) 100%);border-color:rgba(0,0,0,.25);color:#fde9e4;cursor:not-allowed;box-shadow:0 8px 16px -12px rgba(0,0,0,.9)}
+.butaca.vendida::after{background:rgba(253,233,228,.35)}
+.butaca.cargando{opacity:.55;cursor:progress;box-shadow:none}
+.butaca.mio{box-shadow:0 0 0 3px var(--oro-claro),0 8px 16px -12px rgba(0,0,0,.9)}
+.leyenda{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;font-size:.9rem;font-weight:500;color:var(--crema-suave)}
+.leyenda li{display:flex;align-items:center;gap:8px}
+.muestra{display:inline-block;width:20px;height:17px;border-radius:7px 7px 3px 3px;background:linear-gradient(180deg,#fffaf0,#eee1c4)}
+.muestra.sel{background:linear-gradient(180deg,var(--oro-palido),var(--oro-alto))}
+.muestra.vend{background:linear-gradient(180deg,#bd3a2e,var(--rojo-hondo))}
+.muestra.mio{background:linear-gradient(180deg,#bd3a2e,var(--rojo-hondo));box-shadow:0 0 0 2px var(--oro-claro)}
+.muestra.pend{background:transparent;border:2px solid var(--rojo-claro);border-radius:5px}
+.muestra.pag{background:var(--rojo);border-radius:5px}
+.muestra.lib{background:rgba(251,243,226,.1);border:1px solid var(--linea-suave);border-radius:5px}
+
+/* Ventana modal */
+.modal{width:min(480px,calc(100% - 24px));max-width:none;max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);margin:auto;padding:0;overflow:auto;
+  border:1px solid var(--linea);border-top:4px solid var(--oro);border-radius:20px;background:linear-gradient(180deg,var(--madera),var(--noche));color:var(--crema);box-shadow:0 30px 80px -20px rgba(0,0,0,.95)}
+.modal::backdrop{background:rgba(10,6,3,.74);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.modal-cont{padding:20px 20px 22px;display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.modal-cont p{margin:0}
+.m-cab{display:grid;grid-template-columns:1fr auto;align-items:start;gap:4px 12px}
+.m-eyebrow{grid-column:1;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--oro-claro)}
+.m-cab h3{grid-column:1;font-size:1.5rem}
+.m-x{grid-column:2;grid-row:1/span 2;width:40px;height:40px;border-radius:50%;border:1px solid var(--linea-suave);background:transparent;color:var(--crema);font:inherit;font-size:1.4rem;line-height:1;cursor:pointer}
+.m-x:focus-visible{outline:3px solid var(--oro-claro);outline-offset:2px}
+.resumen{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;font:inherit;font-weight:800;font-size:1.1rem;line-height:1;padding:8px 12px;border-radius:10px;border:0;background:linear-gradient(180deg,var(--oro-claro),var(--oro-alto));color:var(--tierra);font-variant-numeric:tabular-nums}
+button.chip{cursor:pointer}
+.chip .q{font-size:1rem;opacity:.7}
+.total{color:var(--crema-suave);font-variant-numeric:tabular-nums}
+.total strong{color:var(--oro-claro);font-weight:800}
+form{display:grid;gap:14px}
+label{display:grid;gap:6px;font-weight:700;font-size:.95rem}
+label small{font-weight:500;color:var(--crema-suave)}
+input[type="text"],input[type="tel"],input[type="password"]{font:inherit;font-size:1rem;font-weight:500;width:100%;padding:12px 14px;border-radius:10px;border:1.5px solid var(--linea-suave);background:var(--vidrio-hondo);color:var(--crema)}
+input::placeholder{color:rgba(251,243,226,.42)}
+input[type="text"]:focus-visible,input[type="tel"]:focus-visible,input[type="password"]:focus-visible{outline:3px solid var(--oro-claro);outline-offset:1px;border-color:transparent}
+.check{display:flex;align-items:center;gap:10px}
+.check input,td input[type="checkbox"]{width:20px;height:20px;margin:0;accent-color:var(--oro-claro);cursor:pointer}
+.acciones{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.btn{font:inherit;font-size:1rem;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:12px;border:1.5px solid transparent;cursor:pointer;text-decoration:none;transition:transform .12s ease}
+.btn:active{transform:scale(.98)}
+.btn:focus-visible{outline:3px solid var(--oro-claro);outline-offset:2px}
+.btn[disabled]{opacity:.55;cursor:default}
+.btn-ancho{width:100%}
+.btn-primario,.btn-oro{background:linear-gradient(180deg,var(--oro-claro),var(--oro-alto));color:var(--tierra);box-shadow:0 8px 18px -10px rgba(243,207,114,.7)}
+.btn-sec{background:transparent;color:var(--crema);border-color:var(--linea-suave)}
+.btn-wa{background:var(--verde);color:#fff}
+.btn-peligro{background:transparent;color:var(--rojo-claro);border-color:var(--rojo-claro)}
+.btn-peligro.lleno{background:var(--rojo);border-color:var(--rojo);color:#fff}
+.link{justify-self:start;background:none;border:0;padding:4px 0;font:inherit;font-weight:700;color:var(--oro-claro);text-decoration:underline;text-underline-offset:3px;cursor:pointer;white-space:nowrap}
+.link:focus-visible{outline:3px solid var(--oro-claro);outline-offset:2px}
+.error{color:var(--rojo-claro);font-weight:700}
+.nota{color:var(--crema-suave);font-size:.92rem}
+.alerta{margin:0;padding:12px 14px;border-radius:10px;background:rgba(243,207,114,.14);border:1px solid var(--linea);color:var(--crema);font-size:.95rem}
+.exito{display:grid;justify-items:center;text-align:center;gap:10px;padding:6px 0 2px}
+.exito .sello{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(180deg,var(--oro-claro),var(--oro-alto));color:var(--tierra);font-size:2rem;font-weight:900;box-shadow:0 10px 30px -10px rgba(243,207,114,.8)}
+.pagar{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 14px;border-radius:12px;background:var(--vidrio-hondo);border:1px solid var(--linea-suave)}
+.pagar strong{font-size:1.4rem;font-weight:900;color:var(--oro-claro);font-variant-numeric:tabular-nums}
+.ficha{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 14px}
+.ficha dt{color:var(--crema-suave);font-size:.85rem;font-weight:600}
+.ficha dd{margin:0;font-weight:700;overflow-wrap:anywhere}
+.liberar{display:grid;gap:10px;padding-top:16px;border-top:1px solid var(--linea-suave)}
+.tel{user-select:all;-webkit-user-select:all;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(23,17,12,.97);border-top:3px solid var(--oro);color:var(--crema);box-shadow:0 -14px 30px -14px rgba(0,0,0,.8)}
+.barra-in{max-width:720px;margin-inline:auto;padding-top:12px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;align-items:center;justify-content:space-between;gap:12px}
+.barra-info{min-width:0}
+.barra-nums{font-weight:900;font-size:1.2rem;line-height:1.15;color:var(--oro-claro);overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.barra-total{color:var(--crema-suave);font-size:.88rem;font-weight:500;font-variant-numeric:tabular-nums}
+.barra-acc{display:flex;gap:8px;flex-shrink:0}
+.btn-fantasma{background:transparent;color:var(--crema);border-color:var(--linea-suave);padding:0 14px}
+body.con-barra{padding-bottom:104px}
+
+/* Panel del vendedor */
+.v-cab{padding-block:28px 6px;display:grid;justify-items:start;gap:10px}
+.v-cab h1{font-size:clamp(2rem,8.5vw,3.2rem)}
+.v-sub{margin:0;color:var(--crema-suave);max-width:56ch}
+.v-sec{margin-top:20px;background:var(--vidrio);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid var(--linea);border-radius:18px;padding:20px;display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.v-sec p{margin:0}
+.v-avance{display:grid;gap:8px}
+.v-avance-txt{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;color:var(--crema-suave);font-weight:600}
+.v-avance-txt strong{font-size:2.6rem;line-height:1;font-weight:900;color:var(--oro-claro);font-variant-numeric:tabular-nums}
+.progreso{height:12px;border-radius:999px;background:rgba(251,243,226,.12);overflow:hidden}
+.progreso i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,var(--oro),var(--oro-claro));transition:width .4s ease}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:600px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.stat{display:grid;gap:2px;padding:12px 14px;border-radius:12px;background:var(--vidrio-hondo);border:1px solid var(--linea-suave);min-width:0}
+.stat span{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--crema-suave)}
+.stat strong{font-weight:900;font-size:1.35rem;line-height:1.15;color:var(--crema);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.stat small{color:var(--crema-suave);font-size:.78rem}
+.mapa{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:8px}
+.mn{font:inherit;display:grid;gap:2px;justify-items:center;padding:8px 4px;border-radius:10px;cursor:pointer;font-weight:800;font-size:1.05rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.mn small{font-size:.66rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.mn.lib{background:rgba(251,243,226,.08);border:1px solid var(--linea-suave);color:var(--crema)}
+.mn.lib small{color:var(--crema-suave)}
+.mn.pend{background:transparent;border:2px solid var(--rojo-claro);color:var(--rojo-claro)}
+.mn.pag{background:var(--rojo);border:2px solid var(--rojo);color:#fff}
+.mn:focus-visible{outline:3px solid var(--oro-claro);outline-offset:2px}
+.v-ley{justify-content:flex-start;margin:0}
+.tabla-wrap{position:relative;overflow-x:auto;border:1px solid var(--linea-suave);border-radius:12px;background:var(--vidrio-hondo)}
+table{width:100%;border-collapse:collapse;font-size:.93rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--linea-suave);vertical-align:middle}
+th{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--crema-suave)}
+tbody tr:last-child td{border-bottom:0}
+td.n{font-weight:900;font-size:1.05rem;color:var(--oro-claro);font-variant-numeric:tabular-nums}
+td small{display:block;color:var(--crema-suave);font-size:.84rem}
+.vacio{margin:0;color:var(--crema-suave)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.copia{width:100%;min-height:140px;font:inherit;font-size:.9rem;padding:10px;border-radius:10px;border:1.5px solid var(--linea-suave);background:var(--vidrio-hondo);color:var(--crema)}
+.clave-form{max-width:360px}
+
+.pie{padding-block:40px 48px;display:grid;justify-items:center;gap:4px;text-align:center}
+.pie p{margin:0;max-width:56ch}
+.pie-et{font-weight:700;font-size:1.15rem}
+.pie-tel{font-weight:800;font-size:clamp(1.6rem,7vw,2.2rem);line-height:1.15;color:var(--oro-claro);text-shadow:var(--sombra-texto)}
+.pie-lot{margin-top:10px!important;font-style:italic;font-weight:800;font-size:1.1rem;color:var(--oro-claro)}
+.pie-nota{margin-top:14px!important;color:var(--crema-suave);font-size:.9rem}
+
+.aviso{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(112px + env(safe-area-inset-bottom,0px));z-index:30;width:max-content;max-width:min(92vw,440px);padding:12px 18px;border-radius:12px;background:var(--crema);color:var(--tierra);font-weight:700;box-shadow:0 12px 30px -10px rgba(0,0,0,.7)}
+
+@media (max-width:380px){.fila{gap:6px}.barra-acc .btn-fantasma{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.butaca[aria-pressed="true"]{transform:none}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+(function () {
+  'use strict';
+
+  var POR_FILA = 5;
+  var CLAVE_LOCAL = 'cm2027-mios';
+  var SORTEO_UTC = Date.UTC(2026, 11, 30);
+  var NUMEROS = ['0522', '0523', '0524', '0525', '0526', '0527', '0528', '0529', '0530', '0531',
+                 '0532', '0533', '0534', '0535', '0536', '0537', '0538', '0539', '0540'];
+
+  var params = new URLSearchParams(location.search);
+  var vista = (/^\/vendedor\/?$/.test(location.pathname) || params.get('v') === 'panel') ? 'panel' : 'publica';
+
+  var C = { valor: 50000, nombreVendedor: '', whatsappVendedor: '' };
+  var valor = 50000;
+  var cargado = false;
+  var vendidos = new Set();
+  var sel = new Set();
+  var modal = null;
+  var borrador = {};
+  var ocupado = false;
+  var mios = leerLocal(CLAVE_LOCAL, []);
+  var avisoTimer = null;
+  var dlg = null;
+
+  // Panel
+  var clave = '';
+  var filas = [];
+
+  /* ---------- Utilidades ---------- */
+  function $(id) { return document.getElementById(id); }
+  function leerLocal(k, def) {
+    try { var v = JSON.parse(localStorage.getItem(k) || 'null'); return v == null ? def : v; } catch (e) { return def; }
+  }
+  function guardarLocal(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function pesos(n) { return '$' + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function digitos(s) { return String(s || '').replace(/\D/g, ''); }
+  function ordenar(a) { return a.slice().sort(); }
+  function plural(n, uno, varios) { return n === 1 ? uno : varios; }
+  function waNumero(s) {
+    var d = digitos(s);
+    if (d.length === 10 && d.charAt(0) === '3') d = '57' + d;
+    return d.length >= 10 ? d : '';
+  }
+  function faltan() {
+    var h = new Date();
+    var d = Math.round((SORTEO_UTC - Date.UTC(h.getFullYear(), h.getMonth(), h.getDate())) / 864e5);
+    if (d > 1) return 'Faltan ' + d + ' días';
+    if (d === 1) return 'Falta 1 día';
+    if (d === 0) return 'Juega hoy';
+    return 'Ya jugó';
+  }
+  function fechaCorta(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    if (isNaN(d)) return String(iso);
+    try { return d.toLocaleString('es-CO', { day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' }); }
+    catch (e) { return d.toLocaleString(); }
+  }
+  function api(ruta, datos, ok, fallo) {
+    var op = datos ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos) } : { cache: 'no-store' };
+    fetch(ruta, op)
+      .then(function (r) { return r.json().catch(function () { return { ok: false, error: 'Respuesta inesperada del servidor (' + r.status + ').' }; }); })
+      .then(function (j) { ok && ok(j || {}); })
+      .catch(function (e) { fallo && fallo(e); });
+  }
+  function aviso(msg) {
+    var a = $('aviso');
+    var destino = dlg && dlg.open ? dlg : document.body;
+    if (a.parentNode !== destino) destino.appendChild(a);
+    a.textContent = msg; a.hidden = false;
+    clearTimeout(avisoTimer);
+    avisoTimer = setTimeout(function () { a.hidden = true; }, 4200);
+  }
+  function errorEn(id, msg) {
+    var el = $(id); if (!el) return;
+    el.textContent = msg || ''; el.hidden = !msg;
+  }
+  function copiar(texto, respaldo) {
+    try { navigator.clipboard.writeText(texto).then(function () { aviso('Copiado.'); }, respaldo); }
+    catch (e) { respaldo(); }
+  }
+
+  var FONDO = '<div class="fondo" aria-hidden="true"></div><div class="velo" aria-hidden="true"></div>' +
+    '<div class="banda"><div class="wrap"><p>La obra del Señor continúa</p></div></div>';
+  var PILDORA = '<p class="pildora"><span>Calendario Millonario 2027</span><span class="sep"> · </span><span>Parroquia Juan Pablo II</span></p>';
+  var COMUNES = '<div class="barra" id="barra" hidden></div>' +
+    '<dialog class="modal" id="modal" aria-labelledby="m-titulo"><div class="modal-cont" id="modal-cont"></div></dialog>' +
+    '<div class="aviso" id="aviso" role="status" aria-live="polite" hidden></div>';
+
+  /* =========================================================
+     PÁGINA DEL BONO
+     ========================================================= */
+  function htmlPublica() {
+    return FONDO +
+      '<figure class="afiche"><img src="/afiche.jpg" width="1170" height="578" alt="Afiche del bono donativo de la Parroquia Juan Pablo II: valor $50.000 COP o 15 USD; con tu aporte participas en el sorteo de 50 millones de pesos el 30 de diciembre de 2026 con la Lotería del Valle. Despacho parroquial +57 316 2357186."></figure>' +
+      '<main class="wrap">' +
+        '<section class="intro">' + PILDORA +
+          '<h1>Escoge tu número</h1>' +
+          '<p class="valor"><span class="monto">Valor: ' + pesos(valor) + '</span><span class="cop">cop</span><span class="usd">/ 15 USD</span></p>' +
+          '<p class="juega">Juega el 30 de Diciembre de 2026 · <strong>' + faltan() + '</strong></p>' +
+        '</section>' +
+        '<section class="sala" aria-labelledby="t-sala">' +
+          '<h2 class="conteo" id="t-sala">Cargando números…</h2>' +
+          '<p class="ayuda">Toca el número que quieres, escribe tus datos y queda apartado a tu nombre. Los números en rojo ya tienen dueño.</p>' +
+          '<div id="estado-error"></div>' +
+          '<div class="pantalla" aria-hidden="true"><span>Sorteo de 50 millones</span></div>' +
+          '<div class="butacas" id="butacas" role="group" aria-label="Números del calendario" aria-busy="true"></div>' +
+          '<ul class="leyenda" id="leyenda"></ul>' +
+        '</section>' +
+        '<footer class="pie">' +
+          '<p class="pie-et">Despacho Parroquial</p>' +
+          '<p class="pie-tel tel">+57 316 2357186</p>' +
+          '<p class="pie-lot">*Juega con la Lotería del Valle*</p>' +
+          '<p class="pie-nota">Cada calendario trae impreso un número que participa en el sorteo de 50 millones de pesos. Bono donativo para la obra de la Parroquia Juan Pablo II.</p>' +
+        '</footer>' +
+      '</main>' + COMUNES;
+  }
+
+  function renderButacas() {
+    var foco = document.activeElement && document.activeElement.dataset ? document.activeElement.dataset.n : null;
+    var html = '';
+    for (var i = 0; i < NUMEROS.length; i += POR_FILA) {
+      html += '<div class="fila">';
+      NUMEROS.slice(i, i + POR_FILA).forEach(function (n) {
+        var vend = vendidos.has(n), s = sel.has(n), mio = vend && mios.indexOf(n) >= 0;
+        var cls = 'butaca' + (vend ? ' vendida' : '') + (mio ? ' mio' : '') + (cargado ? '' : ' cargando');
+        var txt = !cargado ? 'cargando' : mio ? 'apartado por ti' : vend ? 'vendido' : s ? 'en tu selección' : 'disponible';
+        html += '<button type="button" class="' + cls + '" data-n="' + esc(n) + '" aria-pressed="' + (s ? 'true' : 'false') + '"' +
+          (vend || !cargado ? ' aria-disabled="true"' : '') + ' aria-label="Número ' + esc(n) + ', ' + txt + '"><span class="num">' + esc(n) + '</span></button>';
+      });
+      html += '</div>';
+    }
+    $('butacas').innerHTML = html;
+    $('butacas').setAttribute('aria-busy', cargado ? 'false' : 'true');
+    if (foco) { var b = $('butacas').querySelector('[data-n="' + foco + '"]'); if (b) b.focus({ preventScroll: true }); }
+    if (cargado) {
+      var libres = NUMEROS.filter(function (n) { return !vendidos.has(n); }).length;
+      $('t-sala').innerHTML = libres
+        ? '<strong>' + libres + '</strong> de ' + NUMEROS.length + ' números disponibles'
+        : '<strong>Todos los números están vendidos</strong>';
+    }
+    var hayMios = mios.some(function (n) { return vendidos.has(n); });
+    $('leyenda').innerHTML =
+      '<li><i class="muestra"></i>Disponible</li>' +
+      '<li><i class="muestra sel"></i>Tu selección</li>' +
+      '<li><i class="muestra vend"></i>Vendido</li>' +
+      (hayMios ? '<li><i class="muestra mio"></i>Tus números</li>' : '');
+  }
+
+  function tocarButaca(n) {
+    if (ocupado) return;
+    if (!cargado) { aviso('Un momento, estamos cargando los números.'); return; }
+    if (vendidos.has(n)) {
+      aviso(mios.indexOf(n) >= 0 ? 'El ' + n + ' ya es tuyo.' : 'El ' + n + ' ya está vendido. Escoge otro número.');
+      return;
+    }
+    if (sel.has(n)) { sel.delete(n); renderButacas(); renderBarra(); return; }
+    sel.add(n);
+    renderButacas();
+    abrirModal({ tipo: 'datos' });
+  }
+
+  function renderBarra() {
+    var b = $('barra');
+    if (!b) return;
+    var mostrar = vista === 'publica' && sel.size > 0 && !modal;
+    if (mostrar) {
+      var nums = ordenar(Array.from(sel));
+      b.innerHTML = '<div class="barra-in">' +
+        '<div class="barra-info"><div class="barra-nums">' + nums.join(' · ') + '</div>' +
+        '<div class="barra-total">' + nums.length + ' ' + plural(nums.length, 'calendario', 'calendarios') + ' · ' + pesos(nums.length * valor) + '</div></div>' +
+        '<div class="barra-acc"><button type="button" class="btn btn-fantasma" data-acc="limpiar">Quitar</button>' +
+        '<button type="button" class="btn btn-oro" data-acc="continuar">Continuar</button></div></div>';
+    }
+    b.hidden = !mostrar;
+    document.body.classList.toggle('con-barra', mostrar);
+  }
+
+  function aplicarEstado(res) {
+    if (res.config) {
+      C = res.config;
+      valor = Number(C.valor) || valor;
+      if (Array.isArray(C.numeros) && C.numeros.length) NUMEROS = C.numeros;
+    }
+    if (res.vendidos) vendidos = new Set(res.vendidos);
+  }
+
+  function cargarEstado(primeraVez) {
+    if (vista !== 'publica' || ocupado || (!primeraVez && document.hidden)) return;
+    api('/api/estado', null, function (res) {
+      if (!res.vendidos) {
+        if (primeraVez) $('estado-error').innerHTML = '<p class="alerta">' + esc(res.error || 'No se pudieron cargar los números.') + ' Recarga la página.</p>';
+        return;
+      }
+      $('estado-error').innerHTML = '';
+      var antes = vendidos;
+      aplicarEstado(res);
+      cargado = true;
+      var perdidos = Array.from(sel).filter(function (n) { return vendidos.has(n); });
+      perdidos.forEach(function (n) { sel.delete(n); });
+      var cambio = primeraVez || antes.size !== vendidos.size || res.vendidos.some(function (n) { return !antes.has(n); });
+      if (!cambio) return;
+      renderButacas();
+      if (modal && modal.tipo === 'datos') {
+        if (!sel.size) { cerrarModal(false); aviso('Otra persona acaba de apartar ese número. Escoge otro.'); }
+        else if (perdidos.length) { borrador = leerDatos(); $('m-resumen').innerHTML = htmlResumen(ordenar(Array.from(sel)), true); aviso('El ' + perdidos.join(', ') + ' lo acaba de apartar otra persona.'); }
+      } else { renderBarra(); }
+    }, function () {
+      if (primeraVez) $('estado-error').innerHTML = '<p class="alerta">No se pudieron cargar los números. Revisa tu internet y recarga la página.</p>';
+    });
+  }
+
+  /* ---------- Ventana modal ---------- */
+  function abrirModal(m) {
+    modal = m;
+    renderModal();
+    if (!dlg.open) { try { dlg.showModal(); } catch (e) { dlg.setAttribute('open', ''); } }
+    document.documentElement.classList.add('modal-abierto');
+    renderBarra();
+    setTimeout(function () {
+      var f = dlg.querySelector('input:not([type=checkbox])') || dlg.querySelector('.btn');
+      if (f) f.focus();
+    }, 60);
+  }
+
+  function cerrarModal(conservarSeleccion) {
+    if (!conservarSeleccion) { sel.clear(); borrador = {}; }
+    modal = null;
+    if (dlg.open) { try { dlg.close(); } catch (e) { dlg.removeAttribute('open'); } }
+    document.documentElement.classList.remove('modal-abierto');
+    $('modal-cont').innerHTML = '';
+    if (vista === 'publica') { renderButacas(); renderBarra(); }
+  }
+
+  function cabecera(eyebrow, titulo) {
+    return '<header class="m-cab"><p class="m-eyebrow">' + eyebrow + '</p><h3 id="m-titulo">' + titulo + '</h3>' +
+      '<button type="button" class="m-x" data-acc="cerrar" aria-label="Cerrar">×</button></header>';
+  }
+
+  function htmlResumen(nums, quitables) {
+    return '<div class="chips">' + nums.map(function (n) {
+      return quitables
+        ? '<button type="button" class="chip" data-acc="quitar-num" data-num="' + esc(n) + '" aria-label="Quitar el número ' + esc(n) + '">' + esc(n) + '<span class="q" aria-hidden="true">×</span></button>'
+        : '<span class="chip">' + esc(n) + '</span>';
+    }).join('') + '</div>' +
+      '<span class="total">' + nums.length + ' ' + plural(nums.length, 'calendario', 'calendarios') + ' · <strong>' + pesos(nums.length * valor) + '</strong></span>';
+  }
+
+  function htmlModalDatos() {
+    var nums = ordenar(Array.from(sel));
+    var paraOtro = vista === 'panel';
+    return cabecera('Calendario Millonario 2027', paraOtro ? 'Asignar ' + plural(nums.length, 'número', 'números') : plural(nums.length, 'Aparta tu número', 'Aparta tus números')) +
+      '<div class="resumen" id="m-resumen">' + htmlResumen(nums, true) + '</div>' +
+      (paraOtro ? '' : '<button type="button" class="link" data-acc="otro">+ Escoger otro número</button>') +
+      '<form id="f-datos" novalidate>' +
+        '<label for="f-nombre">Nombre y apellido<input type="text" id="f-nombre" autocomplete="' + (paraOtro ? 'off' : 'name') + '" maxlength="80" value="' + esc(borrador.nombre) + '"></label>' +
+        '<label for="f-cel">Celular o WhatsApp<input type="tel" id="f-cel" autocomplete="' + (paraOtro ? 'off' : 'tel') + '" inputmode="tel" maxlength="20" placeholder="300 123 4567" value="' + esc(borrador.celular) + '"></label>' +
+        '<label for="f-nota"><span>Nota <small>(opcional)</small></span><input type="text" id="f-nota" autocomplete="off" maxlength="140" placeholder="Ej.: pago por Nequi, lo recojo el domingo" value="' + esc(borrador.nota) + '"></label>' +
+        '<p class="error" id="f-error" hidden></p>' +
+        '<button type="submit" class="btn btn-primario btn-ancho" id="f-enviar">' + (paraOtro ? 'Asignar' : 'Apartar ' + plural(nums.length, 'mi número', 'mis números')) + '</button>' +
+      '</form>' +
+      (paraOtro ? '' : '<p class="nota">Al tocar Apartar, ' + plural(nums.length, 'el número queda', 'los números quedan') + ' a tu nombre y en rojo para todos. Nadie más ve tu nombre ni tu celular.</p>');
+  }
+
+  function htmlModalListo() {
+    var e = modal.datos;
+    var varios = e.nums.length > 1;
+    var nombreCorto = String(e.nombre || '').split(' ')[0];
+    var nomV = (C.nombreVendedor || '').trim();
+    var wa = waNumero(C.whatsappVendedor);
+    var msg = 'Hola' + (nomV ? ' ' + nomV : '') + ', aparté ' + (varios ? 'los números ' : 'el número ') + e.nums.join(', ') +
+      ' del Calendario Millonario 2027 de la Parroquia Juan Pablo II a nombre de ' + e.nombre + '. Total: ' + pesos(e.nums.length * valor) + '. ¿Cómo te pago?';
+    return cabecera('Calendario Millonario 2027', '¡Listo, ' + esc(nombreCorto) + '!') +
+      '<div class="exito"><div class="sello" aria-hidden="true">✓</div>' +
+        '<div class="chips">' + e.nums.map(function (n) { return '<span class="chip">' + esc(n) + '</span>'; }).join('') + '</div>' +
+        '<p>' + (varios ? 'Tus números quedaron apartados' : 'Tu número quedó apartado') + ' a tu nombre y ya ' + (varios ? 'aparecen' : 'aparece') + ' en rojo para todos.</p></div>' +
+      '<div class="pagar"><span>Valor a pagar</span><strong>' + pesos(e.nums.length * valor) + '</strong></div>' +
+      (wa
+        ? '<p class="nota">Para coordinar el pago, escríbele a ' + (nomV ? esc(nomV) : 'quien te compartió esta página') + '.</p>' +
+          '<a class="btn btn-wa btn-ancho" href="https://wa.me/' + wa + '?text=' + encodeURIComponent(msg) + '" target="_blank" rel="noopener">Avisar por WhatsApp</a>'
+        : '<p class="nota">' + (nomV ? esc(nomV) : 'Quien te compartió esta página') + ' te contactará para el pago.</p>') +
+      '<button type="button" class="btn btn-sec btn-ancho" data-acc="cerrar">Ver los números</button>';
+  }
+
+  function renderModal() {
+    var c = $('modal-cont');
+    if (!modal) { c.innerHTML = ''; return; }
+    if (modal.tipo === 'datos') c.innerHTML = htmlModalDatos();
+    else if (modal.tipo === 'listo') c.innerHTML = htmlModalListo();
+    else if (modal.tipo === 'detalle') c.innerHTML = htmlModalDetalle(modal.n);
+  }
+
+  function leerDatos() {
+    return { nombre: $('f-nombre').value.trim(), celular: $('f-cel').value.trim(), nota: $('f-nota').value.trim() };
+  }
+
+  function enviarDatos() {
+    var d = leerDatos();
+    if (d.nombre.length < 3) { errorEn('f-error', 'Escribe el nombre y apellido.'); $('f-nombre').focus(); return; }
+    if (digitos(d.celular).length < 7) { errorEn('f-error', 'Escribe un número de celular válido.'); $('f-cel').focus(); return; }
+    var nums = ordenar(Array.from(sel)).filter(function (n) { return !vendidos.has(n); });
+    if (!nums.length) { cerrarModal(false); return; }
+    errorEn('f-error', '');
+    ocupado = true;
+    var btn = $('f-enviar'); var txt = btn.textContent;
+    btn.disabled = true; btn.textContent = vista === 'panel' ? 'Asignando…' : 'Apartando…';
+    api('/api/apartar', { nums: nums, nombre: d.nombre, celular: d.celular, nota: d.nota }, function (res) {
+      ocupado = false;
+      if (res.vendidos) vendidos = new Set(res.vendidos);
+      if (res.ok) {
+        sel.clear(); borrador = {};
+        if (vista === 'publica') {
+          nums.forEach(function (n) { if (mios.indexOf(n) < 0) mios.push(n); });
+          guardarLocal(CLAVE_LOCAL, mios);
+          modal = { tipo: 'listo', datos: { nums: nums, nombre: d.nombre } };
+          renderModal(); renderButacas();
+        } else {
+          cerrarModal(false);
+          aviso(plural(nums.length, 'El ', 'Los ') + nums.join(', ') + plural(nums.length, ' quedó asignado.', ' quedaron asignados.'));
+          cargarPanel();
+        }
+        return;
+      }
+      btn.disabled = false; btn.textContent = txt;
+      borrador = d;
+      if (res.tomados && res.tomados.length) {
+        res.tomados.forEach(function (n) { sel.delete(n); });
+        if (vista === 'publica') renderButacas();
+        if (sel.size) $('m-resumen').innerHTML = htmlResumen(ordenar(Array.from(sel)), true);
+        else btn.disabled = true;
+      }
+      errorEn('f-error', res.error || 'No se pudo apartar. Intenta de nuevo.');
+    }, function () {
+      ocupado = false;
+      btn.disabled = false; btn.textContent = txt;
+      errorEn('f-error', 'No se pudo conectar. Revisa tu internet e intenta de nuevo.');
+    });
+  }
+
+  /* =========================================================
+     PANEL DEL VENDEDOR (/vendedor)
+     ========================================================= */
+  function renderClave(msg) {
+    $('vend').innerHTML =
+      '<section class="v-cab">' + PILDORA +
+        '<h1>Panel del vendedor</h1>' +
+        '<p class="v-sub">Escribe tu clave para ver a los compradores y las cuentas.</p>' +
+        '<form id="f-clave" class="clave-form" novalidate>' +
+          '<label for="clave">Clave<input type="password" id="clave" inputmode="numeric" autocomplete="current-password" maxlength="40"></label>' +
+          '<p class="error" id="clave-error"' + (msg ? '' : ' hidden') + '>' + esc(msg || '') + '</p>' +
+          '<button type="submit" class="btn btn-primario" id="clave-btn">Entrar</button>' +
+        '</form>' +
+      '</section>';
+    setTimeout(function () { var i = $('clave'); if (i) i.focus(); }, 50);
+  }
+
+  function recibirPanel(res) {
+    filas = res.filas || [];
+    if (res.config) { C.nombreVendedor = res.config.nombreVendedor || ''; C.whatsappVendedor = res.config.whatsappVendedor || ''; }
+    armarPanel(); renderPanel();
+  }
+
+  function entrar(c, silencioso) {
+    clave = c;
+    var btn = $('clave-btn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Entrando…'; }
+    api('/api/panel', { clave: c, accion: 'datos' }, function (res) {
+      if (res.ok) {
+        try { sessionStorage.setItem('cm2027-clave', c); } catch (e) {}
+        recibirPanel(res);
+      } else {
+        clave = '';
+        try { sessionStorage.removeItem('cm2027-clave'); } catch (e) {}
+        renderClave(silencioso ? '' : res.error || 'Clave incorrecta.');
+      }
+    }, function () { renderClave('No se pudo conectar. Revisa tu internet e intenta de nuevo.'); });
+  }
+
+  function cargarPanel() {
+    if (!clave) return;
+    api('/api/panel', { clave: clave, accion: 'datos' }, function (res) { if (res.ok) recibirPanel(res); });
+  }
+
+  function armarPanel() {
+    if ($('v-stats')) return;
+    $('vend').innerHTML =
+      '<section class="v-cab">' + PILDORA +
+        '<h1>Panel del vendedor</h1>' +
+        '<p class="v-sub">Aquí ves quién compró cada número. Solo entra quien tenga tu clave.</p>' +
+        '<div class="acciones">' +
+          '<a class="btn btn-sec" href="/">← Página del bono</a>' +
+          '<button type="button" class="btn btn-sec" data-acc="actualizar">Actualizar</button>' +
+        '</div>' +
+      '</section>' +
+      '<div id="v-alerta"></div>' +
+      '<section class="v-sec" aria-labelledby="v-t1"><h2 id="v-t1">Resumen</h2>' +
+        '<div class="v-avance"><div class="v-avance-txt"><strong id="v-vendidos"></strong><span id="v-vendidos-txt"></span></div><div class="progreso"><i id="v-barra"></i></div></div>' +
+        '<div class="stats" id="v-stats"></div>' +
+      '</section>' +
+      '<section class="v-sec" aria-labelledby="v-t2"><h2 id="v-t2">Números</h2>' +
+        '<p class="nota">Toca un número vendido para ver sus datos, o uno libre para asignárselo a alguien.</p>' +
+        '<div class="mapa" id="v-mapa"></div>' +
+        '<ul class="leyenda v-ley"><li><i class="muestra lib"></i>Libre</li><li><i class="muestra pend"></i>Vendido, por cobrar</li><li><i class="muestra pag"></i>Vendido y pagado</li></ul>' +
+      '</section>' +
+      '<section class="v-sec" aria-labelledby="v-t3"><h2 id="v-t3">Compradores</h2>' +
+        '<div id="v-tabla"></div>' +
+        '<div class="acciones"><button type="button" class="btn btn-sec" data-acc="copiar-lista" id="v-copiar">Copiar lista</button></div>' +
+        '<textarea class="copia" id="v-copia" readonly hidden aria-label="Lista de compradores para copiar"></textarea>' +
+      '</section>' +
+      '<section class="v-sec" aria-labelledby="v-t4">' +
+        '<form id="f-config" novalidate>' +
+          '<h2 id="v-t4">Tus datos de contacto</h2>' +
+          '<p class="nota">Aparecen cuando alguien aparta un número, para que te avise por WhatsApp y coordinen el pago.</p>' +
+          '<label for="c-nombre">Tu nombre<input type="text" id="c-nombre" maxlength="40" placeholder="Ej.: Javier" value="' + esc(C.nombreVendedor) + '"></label>' +
+          '<label for="c-wa">Tu WhatsApp<input type="tel" id="c-wa" inputmode="tel" maxlength="20" placeholder="300 123 4567" value="' + esc(C.whatsappVendedor) + '"></label>' +
+          '<p class="error" id="c-error" hidden></p>' +
+          '<div class="acciones"><button type="submit" class="btn btn-primario" id="c-guardar">Guardar</button></div>' +
+        '</form>' +
+      '</section>' +
+      '<div style="height:48px"></div>';
+  }
+
+  function stat(etq, val, sub) {
+    return '<div class="stat"><span>' + etq + '</span><strong>' + val + '</strong>' + (sub ? '<small>' + sub + '</small>' : '') + '</div>';
+  }
+
+  function filaDe(n) { return filas.filter(function (f) { return f.numero === n; })[0] || null; }
+
+  function renderPanel() {
+    if (!$('v-stats')) return;
+    var vend = filas.filter(function (f) { return f.nombre; });
+    var pag = vend.filter(function (f) { return f.pagado; }).length;
+    var total = NUMEROS.length;
+    var pct = total ? Math.round(vend.length / total * 100) : 0;
+    $('v-alerta').innerHTML = waNumero(C.whatsappVendedor) ? '' :
+      '<p class="alerta" style="margin-top:16px">Agrega tu WhatsApp en "Tus datos de contacto" para que los compradores puedan avisarte del pago.</p>';
+    $('v-vendidos').textContent = vend.length;
+    $('v-vendidos-txt').textContent = 'de ' + total + ' calendarios vendidos (' + pct + '%)';
+    $('v-barra').style.width = pct + '%';
+    $('v-stats').innerHTML =
+      stat('Disponibles', total - vend.length) +
+      stat('Pagados', pag, 'de ' + vend.length + ' vendidos') +
+      stat('Recaudado', pesos(pag * valor), 'meta ' + pesos(total * valor)) +
+      stat('Por cobrar', pesos((vend.length - pag) * valor));
+
+    $('v-mapa').innerHTML = NUMEROS.map(function (n) {
+      var f = filaDe(n);
+      var cls = !(f && f.nombre) ? 'lib' : (f.pagado ? 'pag' : 'pend');
+      var txt = cls === 'lib' ? 'Libre' : cls === 'pag' ? 'Pagado' : 'Por cobrar';
+      return '<button type="button" class="mn ' + cls + '" data-acc="mapa" data-num="' + esc(n) + '" aria-label="Número ' + esc(n) + ', ' + txt.toLowerCase() + '">' + esc(n) + '<small>' + txt + '</small></button>';
+    }).join('');
+
+    if (!vend.length) {
+      $('v-tabla').innerHTML = '<p class="vacio">Todavía no hay números vendidos. Cuando alguien aparte uno en la página, aparece aquí.</p>';
+    } else {
+      $('v-tabla').innerHTML = '<div class="tabla-wrap"><table><thead><tr><th>Número</th><th>Comprador</th><th>Celular</th><th>Pagó</th><th><span class="sr">Acción</span></th></tr></thead><tbody>' +
+        vend.map(function (f) {
+          return '<tr><td class="n">' + esc(f.numero) + '</td>' +
+            '<td>' + esc(f.nombre) + (f.nota ? '<small>' + esc(f.nota) + '</small>' : '') + (f.fecha ? '<small>' + esc(fechaCorta(f.fecha)) + '</small>' : '') + '</td>' +
+            '<td><span class="tel">' + esc(f.celular) + '</span></td>' +
+            '<td><input type="checkbox" data-pagado="' + esc(f.numero) + '"' + (f.pagado ? ' checked' : '') + ' aria-label="Pagó el ' + esc(f.numero) + '"></td>' +
+            '<td><button type="button" class="link" data-acc="mapa" data-num="' + esc(f.numero) + '">Ver</button></td></tr>';
+        }).join('') + '</tbody></table></div>';
+    }
+    $('v-copiar').disabled = !vend.length;
+    if (modal && modal.tipo === 'detalle' && !ocupado) renderModal();
+  }
+
+  function htmlModalDetalle(n) {
+    var f = filaDe(n) || {};
+    if (!f.nombre) {
+      return cabecera('Número ' + esc(n), 'Ya está libre') + '<p>Este número ya no tiene comprador.</p>' +
+        '<button type="button" class="btn btn-sec btn-ancho" data-acc="cerrar">Cerrar</button>';
+    }
+    var wa = waNumero(f.celular);
+    return cabecera('Número vendido', 'Número ' + esc(n)) +
+      '<dl class="ficha">' +
+        '<dt>Comprador</dt><dd>' + esc(f.nombre) + '</dd>' +
+        '<dt>Celular</dt><dd><span class="tel">' + esc(f.celular) + '</span></dd>' +
+        (f.nota ? '<dt>Nota</dt><dd>' + esc(f.nota) + '</dd>' : '') +
+        (f.fecha ? '<dt>Apartado</dt><dd>' + esc(fechaCorta(f.fecha)) + '</dd>' : '') +
+      '</dl>' +
+      (wa ? '<a class="btn btn-wa btn-ancho" href="https://wa.me/' + wa + '" target="_blank" rel="noopener">Escribirle por WhatsApp</a>' : '') +
+      '<label class="check" for="d-pagado"><input type="checkbox" id="d-pagado" data-pagado="' + esc(n) + '"' + (f.pagado ? ' checked' : '') + '>Ya pagó</label>' +
+      '<div class="liberar">' +
+        (modal && modal.confirmar
+          ? '<p>¿Liberar el ' + esc(n) + '? Volverá a aparecer disponible para todos y se borran los datos de su comprador.</p>' +
+            '<div class="acciones"><button type="button" class="btn btn-peligro lleno" data-acc="liberar-si" id="d-liberar">Sí, liberar</button>' +
+            '<button type="button" class="btn btn-sec" data-acc="liberar-no">Cancelar</button></div>'
+          : '<button type="button" class="btn btn-peligro" data-acc="liberar">Liberar número</button>') +
+      '</div>';
+  }
+
+  function cambiarPagado(n, valorPagado, input) {
+    input.disabled = true;
+    api('/api/panel', { clave: clave, accion: 'pagado', numero: n, pagado: valorPagado }, function (res) {
+      input.disabled = false;
+      if (res.ok) { recibirPanel(res); aviso(valorPagado ? 'El ' + n + ' quedó como pagado.' : 'El ' + n + ' quedó por cobrar.'); }
+      else { input.checked = !valorPagado; aviso(res.error || 'No se pudo guardar.'); }
+    }, function () { input.disabled = false; input.checked = !valorPagado; aviso('No se pudo conectar. Intenta de nuevo.'); });
+  }
+
+  function liberarNumero(n) {
+    ocupado = true;
+    var b = $('d-liberar'); if (b) { b.disabled = true; b.textContent = 'Liberando…'; }
+    api('/api/panel', { clave: clave, accion: 'liberar', numero: n }, function (res) {
+      ocupado = false;
+      if (res.ok) { cerrarModal(false); recibirPanel(res); aviso('El ' + n + ' quedó disponible.'); }
+      else { if (b) { b.disabled = false; b.textContent = 'Sí, liberar'; } aviso(res.error || 'No se pudo liberar.'); }
+    }, function () { ocupado = false; if (b) { b.disabled = false; b.textContent = 'Sí, liberar'; } aviso('No se pudo conectar. Intenta de nuevo.'); });
+  }
+
+  function guardarContacto() {
+    var nombre = $('c-nombre').value.trim();
+    var wa = digitos($('c-wa').value);
+    if (wa && !waNumero(wa)) { errorEn('c-error', 'Escribe el celular con 10 dígitos, o con el indicativo del país.'); return; }
+    errorEn('c-error', '');
+    var b = $('c-guardar'); b.disabled = true; b.textContent = 'Guardando…';
+    api('/api/panel', { clave: clave, accion: 'config', nombreVendedor: nombre, whatsappVendedor: wa }, function (res) {
+      b.disabled = false; b.textContent = 'Guardar';
+      if (res.ok) { recibirPanel(res); aviso('Datos de contacto guardados.'); }
+      else errorEn('c-error', res.error || 'No se pudo guardar.');
+    }, function () { b.disabled = false; b.textContent = 'Guardar'; errorEn('c-error', 'No se pudo conectar. Intenta de nuevo.'); });
+  }
+
+  function textoLista() {
+    return NUMEROS.map(function (n) {
+      var f = filaDe(n);
+      if (!(f && f.nombre)) return n + ' · disponible';
+      return n + ' · ' + f.nombre + (f.celular ? ' · ' + f.celular : '') + ' · ' + (f.pagado ? 'pagado' : 'por cobrar');
+    }).join('\n');
+  }
+
+  /* =========================================================
+     EVENTOS E INICIO
+     ========================================================= */
+  document.addEventListener('click', function (ev) {
+    var t = ev.target;
+    if (!t.closest) return;
+    var b = t.closest('.butaca');
+    if (b) { tocarButaca(b.dataset.n); return; }
+    var a = t.closest('[data-acc]');
+    if (!a) return;
+    var num = a.dataset.num;
+    switch (a.dataset.acc) {
+      case 'cerrar': if (!ocupado) cerrarModal(false); break;
+      case 'otro': borrador = leerDatos(); cerrarModal(true); aviso('Toca otro número disponible.'); break;
+      case 'quitar-num':
+        sel.delete(num);
+        if (!sel.size) { cerrarModal(false); break; }
+        borrador = leerDatos();
+        $('m-resumen').innerHTML = htmlResumen(ordenar(Array.from(sel)), true);
+        if (vista === 'publica') renderButacas();
+        break;
+      case 'continuar': if (sel.size) abrirModal({ tipo: 'datos' }); break;
+      case 'limpiar': sel.clear(); borrador = {}; renderButacas(); renderBarra(); break;
+      case 'actualizar': cargarPanel(); aviso('Actualizando…'); break;
+      case 'mapa':
+        if (ocupado) break;
+        var f = filaDe(num);
+        if (f && f.nombre) abrirModal({ tipo: 'detalle', n: num });
+        else { sel.clear(); sel.add(num); borrador = {}; abrirModal({ tipo: 'datos' }); }
+        break;
+      case 'liberar': modal.confirmar = true; renderModal(); break;
+      case 'liberar-no': modal.confirmar = false; renderModal(); break;
+      case 'liberar-si': if (!ocupado) liberarNumero(modal.n); break;
+      case 'copiar-lista':
+        var txt = textoLista();
+        copiar(txt, function () {
+          var ta = $('v-copia'); ta.value = txt; ta.hidden = false; ta.focus(); ta.select();
+          aviso('Copia la lista desde el cuadro de texto.');
+        });
+        break;
+    }
+  });
+
+  document.addEventListener('change', function (ev) {
+    var t = ev.target;
+    if (t && t.dataset && t.dataset.pagado) cambiarPagado(t.dataset.pagado, t.checked, t);
+  });
+
+  document.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if (ocupado) return;
+    var id = ev.target.id;
+    if (id === 'f-datos') enviarDatos();
+    else if (id === 'f-config') guardarContacto();
+    else if (id === 'f-clave') {
+      var c = $('clave').value.trim();
+      if (!c) { errorEn('clave-error', 'Escribe tu clave.'); return; }
+      entrar(c, false);
+    }
+  });
+
+  function iniciar() {
+    if (vista === 'panel') {
+      document.title = 'Panel del vendedor · Calendario Millonario 2027';
+      $('app').innerHTML = FONDO + '<main class="wrap" id="vend"></main>' + COMUNES;
+      var guardada = '';
+      try { guardada = sessionStorage.getItem('cm2027-clave') || ''; } catch (e) {}
+      renderClave('');
+      if (guardada) entrar(guardada, true);
+      setInterval(function () { if (!document.hidden && !modal) cargarPanel(); }, 30000);
+    } else {
+      $('app').innerHTML = htmlPublica();
+      renderButacas();
+      renderBarra();
+      cargarEstado(true);
+      setInterval(function () { cargarEstado(false); }, 15000);
+      document.addEventListener('visibilitychange', function () { if (!document.hidden) cargarEstado(false); });
+    }
+    dlg = $('modal');
+    dlg.addEventListener('close', function () {
+      if (!modal) return;
+      sel.clear(); borrador = {}; modal = null;
+      document.documentElement.classList.remove('modal-abierto');
+      $('modal-cont').innerHTML = '';
+      if (vista === 'publica') { renderButacas(); renderBarra(); }
+    });
+    dlg.addEventListener('cancel', function (ev) { if (ocupado) ev.preventDefault(); });
+    dlg.addEventListener('click', function (ev) { if (ev.target === dlg && !ocupado) cerrarModal(false); });
+  }
+
+  iniciar();
+})();
+</script>
+</body>
+</html>

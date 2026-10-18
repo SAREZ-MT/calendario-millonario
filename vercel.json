@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    { "source": "/vendedor", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(afiche|fondo|vista-previa).jpg",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+    }
+  ]
+}
