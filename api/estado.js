@@ -1,18 +1,13 @@
 // GET /api/estado → números vendidos (sin datos personales) y datos de contacto del vendedor.
-import { NUMEROS, VALOR, vendidos, leerConfig, mensajeError } from '../lib/db.js';
+import { NUMEROS, VALOR, leerTodo, mensajeError } from '../lib/db.js';
 
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   try {
-    const [lista, cfg] = await Promise.all([vendidos(), leerConfig()]);
+    const { vendidos, config } = await leerTodo();
     res.status(200).json({
-      vendidos: lista,
-      config: {
-        numeros: NUMEROS,
-        valor: VALOR,
-        nombreVendedor: cfg.nombreVendedor || '',
-        whatsappVendedor: cfg.whatsappVendedor || ''
-      }
+      vendidos,
+      config: { numeros: NUMEROS, valor: VALOR, nombreVendedor: config.nombreVendedor, whatsappVendedor: config.whatsappVendedor }
     });
   } catch (e) {
     console.error(e);

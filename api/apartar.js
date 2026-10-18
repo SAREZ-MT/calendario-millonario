@@ -1,5 +1,5 @@
 // POST /api/apartar  { nums: ['0525'], nombre, celular, nota }
-import { NUMEROS, texto, apartarNumeros, vendidos, mensajeError, cuerpo } from '../lib/db.js';
+import { NUMEROS, texto, apartarNumeros, mensajeError, cuerpo } from '../lib/db.js';
 
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
@@ -18,19 +18,18 @@ export default async function handler(req, res) {
   if (celular.replace(/\D/g, '').length < 7) return res.status(200).json({ ok: false, error: 'Escribe un número de celular válido.' });
 
   try {
-    const { tomados } = await apartarNumeros(nums, { nombre, celular, nota });
-    const lista = await vendidos();
+    const { tomados, vendidos } = await apartarNumeros(nums, { nombre, celular, nota });
     if (tomados.length) {
       return res.status(200).json({
         ok: false,
         tomados,
-        vendidos: lista,
+        vendidos,
         error: (tomados.length === 1
           ? 'El ' + tomados[0] + ' lo acaba de apartar otra persona.'
           : 'Los números ' + tomados.join(', ') + ' los acaba de apartar otra persona.') + ' Escoge otro.'
       });
     }
-    return res.status(200).json({ ok: true, nums, vendidos: lista });
+    return res.status(200).json({ ok: true, nums, vendidos });
   } catch (e) {
     console.error(e);
     return res.status(500).json({ ok: false, error: mensajeError(e) });

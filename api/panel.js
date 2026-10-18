@@ -1,16 +1,11 @@
 // POST /api/panel  { clave, accion: 'datos' | 'pagado' | 'liberar' | 'config', ... }
 // Solo responde con la clave del vendedor (variable de entorno CLAVE_PANEL en Vercel).
 import {
-  NUMEROS, leerTodos, leerConfig, guardarConfig, marcarPagado, liberarNumero,
+  NUMEROS, leerTodo, guardarConfig, marcarPagado, liberarNumero,
   texto, mensajeError, cuerpo
 } from '../lib/db.js';
 
 const esperar = (ms) => new Promise((r) => setTimeout(r, ms));
-
-async function datosPanel() {
-  const [filas, config] = await Promise.all([leerTodos(), leerConfig()]);
-  return { ok: true, filas, config: { nombreVendedor: config.nombreVendedor || '', whatsappVendedor: config.whatsappVendedor || '' } };
-}
 
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
@@ -40,7 +35,8 @@ export default async function handler(req, res) {
         whatsappVendedor: texto(b.whatsappVendedor, 20).replace(/\D/g, '')
       });
     }
-    return res.status(200).json(await datosPanel());
+    const { filas, config } = await leerTodo();
+    return res.status(200).json({ ok: true, filas, config });
   } catch (e) {
     console.error(e);
     return res.status(500).json({ ok: false, error: mensajeError(e) });
