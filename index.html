@@ -571,7 +571,7 @@ td small{display:block;color:var(--crema-suave);font-size:.84rem}
         '<h1>Panel del vendedor</h1>' +
         '<p class="v-sub">Escribe tu clave para ver a los compradores y las cuentas.</p>' +
         '<form id="f-clave" class="clave-form" novalidate>' +
-          '<label for="clave">Clave<input type="password" id="clave" inputmode="numeric" autocomplete="current-password" maxlength="40"></label>' +
+          '<label for="clave">Clave<input type="password" id="clave" autocomplete="current-password" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="40"></label>' +
           '<p class="error" id="clave-error"' + (msg ? '' : ' hidden') + '>' + esc(msg || '') + '</p>' +
           '<button type="submit" class="btn btn-primario" id="clave-btn">Entrar</button>' +
         '</form>' +
