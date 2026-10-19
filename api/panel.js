@@ -1,7 +1,7 @@
 // POST /api/panel  { clave, accion: 'datos' | 'pagado' | 'liberar' | 'config', ... }
 // Solo responde con la clave del vendedor (variable de entorno CLAVE_PANEL en Vercel).
 import {
-  NUMEROS, leerTodo, guardarConfig, marcarPagado, liberarNumero,
+  NUMEROS, leerTodo, guardarConfig, marcarPagado, liberarNumero, diagnostico,
   texto, mensajeError, cuerpo
 } from '../lib/db.js';
 
@@ -22,6 +22,7 @@ export default async function handler(req, res) {
   }
 
   try {
+    if (b.accion === 'diagnostico') return res.status(200).json({ ok: true, diagnostico: await diagnostico() });
     const numero = String(b.numero || '');
     if (b.accion === 'pagado') {
       if (!NUMEROS.includes(numero)) return res.status(200).json({ ok: false, error: 'Número no válido.' });
