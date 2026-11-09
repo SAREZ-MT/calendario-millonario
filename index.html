@@ -419,11 +419,12 @@ td small{display:block;color:var(--crema-suave);font-size:.84rem}
       }
       $('estado-error').innerHTML = '';
       var antes = vendidos;
+      var listaAntes = NUMEROS.join(',');
       aplicarEstado(res);
       cargado = true;
-      var perdidos = Array.from(sel).filter(function (n) { return vendidos.has(n); });
+      var perdidos = Array.from(sel).filter(function (n) { return vendidos.has(n) || NUMEROS.indexOf(n) < 0; });
       perdidos.forEach(function (n) { sel.delete(n); });
-      var cambio = primeraVez || antes.size !== vendidos.size || res.vendidos.some(function (n) { return !antes.has(n); });
+      var cambio = primeraVez || listaAntes !== NUMEROS.join(',') || antes.size !== vendidos.size || res.vendidos.some(function (n) { return !antes.has(n); });
       if (!cambio) return;
       renderButacas();
       if (modal && modal.tipo === 'datos') {
@@ -581,6 +582,7 @@ td small{display:block;color:var(--crema-suave);font-size:.84rem}
 
   function recibirPanel(res) {
     filas = res.filas || [];
+    if (Array.isArray(res.numeros) && res.numeros.length) NUMEROS = res.numeros;
     if (res.config) { C.nombreVendedor = res.config.nombreVendedor || ''; C.whatsappVendedor = res.config.whatsappVendedor || ''; }
     armarPanel(); renderPanel();
   }

@@ -1,5 +1,5 @@
 // POST /api/apartar  { nums: ['0525'], nombre, celular, nota }
-import { NUMEROS, texto, apartarNumeros, mensajeError, cuerpo } from '../lib/db.js';
+import { normalizarNumero, texto, apartarNumeros, mensajeError, cuerpo } from '../lib/db.js';
 
 export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
@@ -7,8 +7,9 @@ export default async function handler(req, res) {
 
   const b = cuerpo(req);
   const nums = (Array.isArray(b.nums) ? b.nums : [])
-    .map(String)
-    .filter((n, i, a) => NUMEROS.includes(n) && a.indexOf(n) === i);
+    .slice(0, 50)
+    .map(normalizarNumero)
+    .filter((n, i, a) => n && a.indexOf(n) === i);
   const nombre = texto(b.nombre, 80);
   const celular = texto(b.celular, 20);
   const nota = texto(b.nota, 140);
@@ -18,7 +19,13 @@ export default async function handler(req, res) {
   if (celular.replace(/\D/g, '').length < 7) return res.status(200).json({ ok: false, error: 'Escribe un número de celular válido.' });
 
   try {
-    const { tomados, vendidos } = await apartarNumeros(nums, { nombre, celular, nota });
+    const { tomados, invalidos, vendidos } = await apartarNumeros(nums, { nombre, celular, nota });
+    if (invalidos.length) {
+      return res.status(200).json({
+        ok: false, tomados: invalidos, vendidos,
+        error: (invalidos.length === 1 ? 'El ' + invalidos[0] + ' ya no está' : 'Los números ' + invalidos.join(', ') + ' ya no están') + ' en la rifa. Escoge otro.'
+      });
+    }
     if (tomados.length) {
       return res.status(200).json({
         ok: false,
